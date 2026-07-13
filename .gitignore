@@ -1,0 +1,58 @@
+# =============================================================================
+# .gitignore racine — StudyFlow
+# Règles générales valables partout dans le monorepo.
+# =============================================================================
+
+# Dépendances
+node_modules/
+
+# Variables d'environnement (secrets : JWT, mots de passe DB...)
+.env
+.env.local
+.env.*.local
+*.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Builds / sorties de compilation
+dist/
+build/
+out/
+coverage/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Cache divers
+.cache/
+.parcel-cache/
+.eslintcache
+*.tmp
+
+# Fichiers uploadés par les utilisateurs (documents — feature C)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Dumps / sauvegardes de base de données
+*.sql.bak
+*.dump
+
+# docs
+/cahier-des-charges-v2.md
+/mcd.md
+/mld.md
