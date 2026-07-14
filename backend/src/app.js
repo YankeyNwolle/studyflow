@@ -15,8 +15,21 @@ import { errorHandler } from './middlewares/errorHandler.js';
 const app = express();
 
 // --- Middlewares globaux -----------------------------------------------------
-// CORS : autorise le frontend (autre origine/port) à appeler cette API.
-app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+// CORS : autorise le frontend à appeler cette API.
+// En développement, Vite peut changer de port (5173, 5174...). Pour éviter que
+// l'auth casse à chaque changement de port, on autorise TOUTE origine localhost.
+// (En production, on restreindra à l'URL réelle du site via CORS_ORIGIN.)
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Requêtes sans origine (ex : Postman/curl) ou toute origine localhost : OK.
+      if (!origin || /^http:\/\/localhost:\d+$/.test(origin) || origin === process.env.CORS_ORIGIN) {
+        return callback(null, true);
+      }
+      return callback(new Error('Origine non autorisée par CORS'));
+    },
+  })
+);
 
 // Parse automatiquement le corps JSON des requêtes -> disponible dans req.body.
 app.use(express.json());

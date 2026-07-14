@@ -1,0 +1,23 @@
+/* =============================================================================
+   global.css — Styles de base appliqués à toute l'application
+   -----------------------------------------------------------------------------
+   Un "reset" minimal : on supprime les marges par défaut du navigateur (qui
+   provoquaient une barre de défilement inutile) et on fixe des réglages sains.
+   ============================================================================= */
+
+* {
+  box-sizing: border-box; /* la largeur inclut padding + bordure : calculs simples */
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* permet aux pages en 100vh de tenir pile dans l'écran */
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #111827;
+}
