@@ -38,6 +38,10 @@ desktop.ini
 *.swo
 *~
 
+#claude
+CLAUDE.md
+.claude/
+
 # Cache divers
 .cache/
 .parcel-cache/
