@@ -8,6 +8,7 @@
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth.js';
+import LandingPage from '../pages/LandingPage.jsx';
 import LoginPage from '../pages/LoginPage.jsx';
 import RegisterPage from '../pages/RegisterPage.jsx';
 import DashboardPage from '../pages/DashboardPage.jsx';
@@ -38,14 +39,10 @@ const AppRoutes = () => {
         element={estConnecte ? <Navigate to="/" replace /> : <RegisterPage />}
       />
 
-      {/* Page protégée : accueil / dashboard. */}
+      {/* Accueil : landing page publique si déconnecté, dashboard sinon. */}
       <Route
         path="/"
-        element={
-          <RoutePrivee>
-            <DashboardPage />
-          </RoutePrivee>
-        }
+        element={estConnecte ? <DashboardPage /> : <LandingPage />}
       />
 
       {/* Toute autre URL renvoie vers l'accueil. */}
